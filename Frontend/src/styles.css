@@ -1,0 +1,99 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-sage: var(--sage);
+  --color-dust: var(--dust);
+
+  --font-display: "Noto Serif SC", "Source Serif Pro", Georgia, serif;
+  --font-sans: "Inter", "PingFang SC", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Warm paper palette */
+  --paper: oklch(0.972 0.012 80);
+  --paper-deep: oklch(0.945 0.018 75);
+  --ink: oklch(0.22 0.025 55);
+  --dust: oklch(0.62 0.025 60);
+
+  /* Emotion accents */
+  --ember: oklch(0.62 0.16 35);          /* warm terracotta */
+  --ember-soft: oklch(0.82 0.08 40);
+  --sage: oklch(0.62 0.07 145);          /* growth */
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.985 0.008 80);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.985 0.008 80);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-deep);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-deep);
+  --muted-foreground: var(--dust);
+  --accent: var(--ember);
+  --accent-foreground: var(--paper);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: var(--paper);
+  --border: oklch(0.88 0.018 75);
+  --input: oklch(0.88 0.018 75);
+  --ring: var(--ember);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+/* Subtle paper grain */
+@utility paper-grain {
+  background-image:
+    radial-gradient(oklch(0.85 0.02 70 / 0.25) 1px, transparent 1px),
+    radial-gradient(oklch(0.85 0.02 70 / 0.18) 1px, transparent 1px);
+  background-size: 24px 24px, 13px 13px;
+  background-position: 0 0, 7px 11px;
+}
